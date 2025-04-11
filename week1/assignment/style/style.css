@@ -88,6 +88,9 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .navList > li {
@@ -103,11 +106,23 @@ nav {
 }
 
 .navList > li:hover {
-  transition: all 0.3s ease-in-out;
-  border-radius: 0.5rem;
   background-color: var(--color-secondary);
   color: #ffffff;
   cursor: pointer;
+}
+
+.navList > li:first-child:hover {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.navList > li:last-child:hover {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.navList > li:not(:first-child):not(:last-child):hover {
+  border-radius: 0; /* 중간은 네모 */
 }
 
 section {
