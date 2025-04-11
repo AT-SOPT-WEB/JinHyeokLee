@@ -42,17 +42,24 @@ header > p {
 }
 
 /* main */
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   width: 100%;
   padding-top: 12rem;
   padding: 12rem 2rem 0 2rem;
   display: flex;
   gap: 2rem;
+
+  margin-bottom: 10rem;
 }
 
 main {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -285,4 +292,22 @@ section > p {
 
 .card svg:hover path {
   fill: #ff6b6b;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  height: 10rem;
+  padding: 0 3rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--color-default);
+}
+
+footer > p {
+  font-size: 1.5rem;
+  font-weight: 400;
 }
