@@ -114,6 +114,11 @@ nav {
   transition: all 0.3s ease-in-out;
 }
 
+/* 이렇게 해야 text(a 태그) 아닌 곳 클릭 시에도 이동 가능 */
+.navList > li > a {
+  display: block;
+}
+
 .navList > li:hover {
   background-color: var(--color-secondary);
   color: #ffffff;
