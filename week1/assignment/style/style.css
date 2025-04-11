@@ -189,7 +189,7 @@ section > p {
 }
 
 /* book section */
-.book-card-container {
+.card-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -199,16 +199,17 @@ section > p {
   @media screen and (max-width: 768px) {
     height: 50rem;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
-.book-card-container::-webkit-scrollbar {
+.card-container::-webkit-scrollbar {
   @media screen and (max-width: 768px) {
     width: 1rem;
   }
 }
 
-.book-card-container::-webkit-scrollbar-thumb {
+.card-container::-webkit-scrollbar-thumb {
   height: 30%;
   background: var(--color-primary);
 
@@ -224,7 +225,7 @@ section > p {
 
   flex-grow: 1;
   flex-shrink: 1;
-  flex-basis: calc(25% - 1.5rem);
+  flex-basis: calc(20% - 1.5rem);
 
   min-width: 20rem;
   max-width: 30rem;
@@ -236,7 +237,7 @@ section > p {
   transition: all 0.3s ease-in-out;
 }
 
-.book {
+.card-image {
   width: 15rem;
 }
 
@@ -259,9 +260,22 @@ section > p {
   color: var(--color-secondary);
 }
 
+.card > p:nth-of-type(3) {
+  font-size: 2.3rem;
+  font-weight: 600;
+  transition: all 0.5s ease;
+
+  cursor: pointer;
+}
+
+.card > p:nth-of-type(3):hover {
+  transition: all 0.5s ease;
+  color: #ff6b6b;
+}
+
 .card svg path {
   fill: #555;
-  transition: fill 0.3s ease;
+  transition: fill 0.5s ease;
   cursor: pointer;
 }
 
