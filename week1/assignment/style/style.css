@@ -1,3 +1,8 @@
+body {
+  background-color: var(--color-bg);
+}
+
+/* header */
 header {
   width: 100%;
   height: 9rem;
@@ -7,7 +12,7 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  background-color: var(--color-secondary);
+  background-color: var(--color-default);
   position: fixed;
 }
 
@@ -30,4 +35,75 @@ header > p {
 .menuIcon {
   width: 3rem;
   height: 3rem;
+}
+
+/* main */
+.container {
+  width: 100%;
+  height: 100vh;
+  padding-top: 12rem;
+  padding: 12rem 2rem 0 2rem;
+
+  display: flex;
+  gap: 2rem;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+  border: 1px solid var(--color-secondary);
+}
+
+/* aside */
+
+aside {
+  width: 20rem;
+  height: 20rem;
+  padding: 2rem;
+  background-color: var(--color-default);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+aside > p {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+nav {
+  width: 100%;
+}
+
+.navList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.navList > li {
+  width: 100%;
+  padding: 0.8rem 0;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-align: center;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.navList > li:hover {
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.5rem;
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  cursor: pointer;
 }
