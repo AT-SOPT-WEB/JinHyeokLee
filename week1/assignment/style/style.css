@@ -180,19 +180,43 @@ section > p {
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 2rem;
+
+  @media screen and (max-width: 768px) {
+    height: 50rem;
+    overflow-y: scroll;
+  }
+}
+
+.book-card-container::-webkit-scrollbar {
+  @media screen and (max-width: 768px) {
+    width: 1rem;
+  }
+}
+
+.book-card-container::-webkit-scrollbar-thumb {
+  height: 30%;
+  background: var(--color-primary);
+
+  border-radius: 1rem;
 }
 
 .card {
-  width: 25rem;
-  padding: 1rem 0;
-  background-color: #ffffff;
-  border-radius: 0.5rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: calc(25% - 1.5rem);
+
+  min-width: 20rem;
+  max-width: 30rem;
+
+  padding: 1rem 0;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
 
   transition: all 0.3s ease-in-out;
 }
