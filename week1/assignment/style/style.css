@@ -1,7 +1,9 @@
 body {
   background-color: var(--color-bg);
 }
-
+html {
+  scroll-behavior: smooth;
+}
 /* header */
 header {
   width: 100%;
@@ -131,6 +133,8 @@ section {
 
   background-color: var(--color-gray);
   border-radius: 0.5rem;
+
+  scroll-margin-top: 100px;
 }
 
 section > p {
