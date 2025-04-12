@@ -49,7 +49,7 @@ const addTodo = (e) => {
 
 addBtn.addEventListener('click', addTodo);
 
-// 페이지 로드 시 로컬 스토리지에서 할 일 목록 불러오기
+// 새로고침 시 TODO 불러오기~
 window.addEventListener('load', () => {
   printTodos();
 });
