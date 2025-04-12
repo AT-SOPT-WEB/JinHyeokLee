@@ -12,21 +12,19 @@ const loadTodos = () => {
   const storedTodos = localStorage.getItem('todoItems');
   if (storedTodos) {
     todoItems = JSON.parse(storedTodos);
-    printTodos();
   } else {
     return;
   }
 };
 
-// const resetTodos = () => {
-//   todoList.innerHTML = '';
-//   todoItems = [];
-// };
+const resetTodos = () => {
+  todoList.innerHTML = '';
+};
 
 // 로컬 스토리지에서 할 일 목록 불러오기
 const printTodos = () => {
-  // resetTodos();
-  // getLocalStorageTodos();
+  resetTodos();
+  loadTodos();
 
   todoItems.forEach((item) => {
     const li = document.createElement('li');
@@ -53,5 +51,5 @@ const addTodo = (e) => {
 addBtn.addEventListener('click', addTodo);
 
 window.addEventListener('DOMContentLoaded', () => {
-  loadTodos();
+  printTodos();
 });
