@@ -8,22 +8,25 @@ const setLocalStorageTodos = () => {
   localStorage.setItem('todoItems', JSON.stringify(todoItems));
 };
 
-const getLocalStorageTodos = () => {
+const loadTodos = () => {
   const storedTodos = localStorage.getItem('todoItems');
   if (storedTodos) {
     todoItems = JSON.parse(storedTodos);
+    printTodos();
+  } else {
+    return;
   }
 };
 
-const resetTodos = () => {
-  todoList.innerHTML = '';
-  todoItems = [];
-};
+// const resetTodos = () => {
+//   todoList.innerHTML = '';
+//   todoItems = [];
+// };
 
 // 로컬 스토리지에서 할 일 목록 불러오기
 const printTodos = () => {
-  resetTodos();
-  getLocalStorageTodos();
+  // resetTodos();
+  // getLocalStorageTodos();
 
   todoItems.forEach((item) => {
     const li = document.createElement('li');
@@ -49,7 +52,6 @@ const addTodo = (e) => {
 
 addBtn.addEventListener('click', addTodo);
 
-// 새로고침 시 TODO 불러오기~
-window.addEventListener('load', () => {
-  printTodos();
+window.addEventListener('DOMContentLoaded', () => {
+  loadTodos();
 });
