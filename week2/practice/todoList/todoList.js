@@ -52,4 +52,4 @@ addBtn.addEventListener('click', addTodo);
 
 window.addEventListener('DOMContentLoaded', () => {
   printTodos();
-});
+});w
