@@ -13,26 +13,32 @@
     <div class="container">
       <nav>
         <ul class="tab_container">
-          <li class="tab"><button>전체</button></li>
-          <li class="tab"><button>완료</button></li>
-          <li class="tab"><button>미완료</button></li>
-          <li class="tab"><button>중요도</button></li>
+          <li class="tab"><button type="button">전체</button></li>
+          <li class="tab"><button type="button">완료</button></li>
+          <li class="tab"><button type="button">미완료</button></li>
+          <li class="tab"><button type="button">중요도</button></li>
         </ul>
       </nav>
 
       <main>
-        <div>
+        <div class="input_container">
           <input type="text" placeholder="할 일을 입력하세요" />
-          <select name="중요도 선택" id="">
+          <select name="중요도 선택" id="add_select">
+            <option selected disabled>중요도 선택</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
-          <button>추가</button>
+          <button id="add_button" class="form_button">추가</button>
         </div>
-        <div>
-          <button>삭제</button>
-          <button>완료</button>
+
+        <div class="button_container">
+          <button type="button" id="delete_button" class="form_button">
+            삭제
+          </button>
+          <button type="button" id="complete_button" class="form_button">
+            완료
+          </button>
         </div>
 
         <table>
