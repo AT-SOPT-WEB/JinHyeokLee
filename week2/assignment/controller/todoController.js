@@ -8,6 +8,13 @@ import {
 } from '../model/todoModel.js';
 import { renderTable } from '../view/todoView.js';
 
+const resetInput = () => {
+  const input = document.querySelector('input[type="text"]');
+  const priority = document.querySelector('#add_select');
+  input.value = '';
+  priority.value = '';
+};
+
 const handleAddTodo = () => {
   const input = document.querySelector('input[type="text"]');
   const priority = document.querySelector('#add_select');
@@ -25,6 +32,7 @@ const handleAddTodo = () => {
   });
 
   addTodo(newTodo);
+  resetInput();
   renderTable(getTodos());
 };
 

@@ -43,4 +43,12 @@ const completeTodo = (id) => {
   setTodos(updatedTodos);
 };
 
-export { addTodo, deleteTodo, getTodos, initTable, setTodos, completeTodo, TodoDTO };
+export {
+  addTodo,
+  completeTodo,
+  deleteTodo,
+  getTodos,
+  initTable,
+  setTodos,
+  TodoDTO,
+};
