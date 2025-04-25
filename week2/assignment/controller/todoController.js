@@ -28,7 +28,7 @@ const handleAddTodo = () => {
     id: Date.now(),
     title: input.value,
     completed: false,
-    priority: priority.value,
+    priority: parseInt(priority.value, 10),
   });
 
   addTodo(newTodo);
