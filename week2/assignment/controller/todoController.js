@@ -1,5 +1,6 @@
 import {
   addTodo,
+  completeTodo,
   deleteTodo,
   getTodos,
   initTable,
@@ -38,14 +39,27 @@ const handleDeleteSelectedTodos = () => {
   renderTable(getTodos());
 };
 
+const handleCompleteTodo = (id) => {
+  const checkboxes = document.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
+  checkboxes.forEach((checkbox) => {
+    const id = parseInt(checkbox.dataset.id, 10);
+    completeTodo(id);
+  });
+  renderTable(getTodos());
+};
+
 const init = () => {
   initTable();
   renderTable(getTodos());
   const addButton = document.querySelector('#add_button');
   const deleteButton = document.querySelector('#delete_button');
+  const completeButton = document.querySelector('#complete_button');
 
   addButton.addEventListener('click', handleAddTodo);
   deleteButton.addEventListener('click', handleDeleteSelectedTodos);
+  completeButton.addEventListener('click', handleCompleteTodo);
 };
 
 export { init };

@@ -35,4 +35,12 @@ const deleteTodo = (id) => {
   setTodos(updatedTodos);
 };
 
-export { addTodo, deleteTodo, getTodos, initTable, setTodos, TodoDTO };
+const completeTodo = (id) => {
+  const storedTodos = getTodos();
+  const updatedTodos = storedTodos.map((todo) =>
+    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  );
+  setTodos(updatedTodos);
+};
+
+export { addTodo, deleteTodo, getTodos, initTable, setTodos, completeTodo, TodoDTO };
