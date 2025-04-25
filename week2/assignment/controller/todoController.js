@@ -92,7 +92,6 @@ const handlePriorityFilter = (priority) => {
   const filteredTodos = todos.filter((todo) => todo.priority === priority);
   renderTable(filteredTodos);
 };
-
 const init = () => {
   initTable();
   renderTable(getTodos());

@@ -1,18 +1,58 @@
+import { getTodos, setTodos } from '../model/todoModel.js';
+
 const renderTable = (todos) => {
   const tableBody = document.querySelector('tbody');
   tableBody.innerHTML = '';
 
   todos.forEach((todo) => {
     const row = document.createElement('tr');
+    row.setAttribute('draggable', true);
+    row.dataset.id = todo.id;
+
     row.innerHTML = `
       <td><input type="checkbox" data-id="${todo.id}"></td>
       <td>${todo.priority}</td>
       <td>${todo.completed ? '✅' : '❌'}</td>
       <td>${todo.title}</td>
     `;
+
+    // 드래그 앤 드랍 이벤트 리스너
+    row.addEventListener('dragstart', (e) => handleDragStart(e, todo.id));
+    row.addEventListener('dragover', handleDragOver);
+    row.addEventListener('drop', (e) => handleDrop(e, todo.id));
+
     tableBody.appendChild(row);
   });
+
   updateCheckboxListeners();
+};
+
+let draggedTodoId = null;
+
+const handleDragStart = (e, id) => {
+  draggedTodoId = id;
+  e.dataTransfer.setData('text/plain', id);
+};
+
+const handleDragOver = (e) => {
+  e.preventDefault();
+};
+
+const handleDrop = (e, id) => {
+  e.preventDefault();
+
+  if (draggedTodoId === id) return;
+
+  const todos = getTodos();
+  const draggedTodoIndex = todos.findIndex((todo) => todo.id === draggedTodoId);
+  const droppedTodoIndex = todos.findIndex((todo) => todo.id === id);
+
+  // 순서 변경
+  const [draggedTodo] = todos.splice(draggedTodoIndex, 1);
+  todos.splice(droppedTodoIndex, 0, draggedTodo);
+
+  setTodos(todos);
+  renderTable(todos);
 };
 
 const showModal = (message) => {
