@@ -14,4 +14,20 @@ const renderTable = (todos) => {
   });
 };
 
-export { renderTable };
+const showModal = (message) => {
+  const modal = document.querySelector('.modal');
+  const overlay = document.querySelector('.modal_overlay');
+  const modalMessage = document.querySelector('.modal_msg');
+
+  modalMessage.textContent = message;
+  modal.style.display = 'flex';
+  overlay.style.display = 'block';
+
+  const closeModalButton = document.querySelector('.close_button');
+  closeModalButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+};
+
+export { renderTable, showModal };

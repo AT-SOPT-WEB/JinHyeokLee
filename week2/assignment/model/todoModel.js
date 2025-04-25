@@ -1,4 +1,5 @@
 import { todos } from '../data/todoData.js';
+import { showModal } from '../view/todoView.js';
 class TodoDTO {
   constructor({ id, title, completed, priority }) {
     this.id = id;
@@ -35,17 +36,45 @@ const deleteTodo = (id) => {
   setTodos(updatedTodos);
 };
 
-const completeTodo = (id) => {
-  const storedTodos = getTodos();
-  const updatedTodos = storedTodos.map((todo) =>
-    todo.id === id ? { ...todo, completed: !todo.completed } : todo
-  );
+// const completeTodo = (id) => {
+//   const storedTodos = getTodos();
+//   const updatedTodos = storedTodos.map((todo) => {
+//     if (todo.id === id) {
+//       if (todo.completed) {
+//         showModal('이미 완료된 todo입니다!');
+//         return todo;
+//       }
+//       return { ...todo, completed: !todo.completed };
+//     } else {
+//       return todo;
+//     }
+//   });
+//   setTodos(updatedTodos);
+// };
+
+const completeTodos = (ids) => {
+  const todos = getTodos();
+  const selected = todos.filter((todo) => ids.includes(todo.id));
+
+  const hasCompleted = selected.some((todo) => todo.completed);
+  if (hasCompleted) {
+    showModal('이미 완료된 todo가 포함되어 있어요!');
+    return;
+  }
+
+  const updatedTodos = todos.map((todo) => {
+    if (ids.includes(todo.id)) {
+      return { ...todo, completed: true };
+    }
+    return todo;
+  });
+
   setTodos(updatedTodos);
 };
 
 export {
   addTodo,
-  completeTodo,
+  completeTodos,
   deleteTodo,
   getTodos,
   initTable,
