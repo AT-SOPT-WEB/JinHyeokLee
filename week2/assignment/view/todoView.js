@@ -12,6 +12,7 @@ const renderTable = (todos) => {
     `;
     tableBody.appendChild(row);
   });
+  updateCheckboxListeners();
 };
 
 const showModal = (message) => {
@@ -27,6 +28,30 @@ const showModal = (message) => {
   closeModalButton.addEventListener('click', () => {
     modal.style.display = 'none';
     overlay.style.display = 'none';
+  });
+};
+
+const updateCheckboxListeners = () => {
+  const thCheckbox = document.querySelector('#th_checkbox');
+  const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+  const isAllChecked = () => {
+    return Array.from(checkboxes).every((checkbox) => checkbox.checked);
+  };
+  const handleAllChecked = () => {
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = thCheckbox.checked;
+    });
+  };
+
+  const updateThCheckbox = () => {
+    thCheckbox.checked = isAllChecked();
+  };
+
+  thCheckbox.addEventListener('click', handleAllChecked);
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('click', updateThCheckbox);
   });
 };
 
