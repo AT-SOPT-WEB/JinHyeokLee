@@ -22,14 +22,19 @@
           <li class="tab">
             <button type="button" class="uncompleted_tab">미완료</button>
           </li>
-          <li class="tab">
-            <button type="button">
+          <li class="tab dropdown">
+            <button type="button" class="dropdown_button">
               중요도
               <img
                 src="./assets/icons/dropdownIcon.png"
                 alt="드롭다운 아이콘"
               />
             </button>
+            <ul class="dropdown_menu">
+              <li class="dropdown_item" data-priority="1">1</li>
+              <li class="dropdown_item" data-priority="2">2</li>
+              <li class="dropdown_item" data-priority="3">3</li>
+            </ul>
           </li>
         </ul>
       </nav>

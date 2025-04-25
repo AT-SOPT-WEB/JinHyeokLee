@@ -87,15 +87,25 @@ const handleFilterUncompleted = () => {
   renderTable(uncompletedTodos);
 };
 
+const handlePriorityFilter = (priority) => {
+  const todos = getTodos();
+  const filteredTodos = todos.filter((todo) => todo.priority === priority);
+  renderTable(filteredTodos);
+};
+
 const init = () => {
   initTable();
   renderTable(getTodos());
+
   const addButton = document.querySelector('#add_button');
   const deleteButton = document.querySelector('#delete_button');
   const completeButton = document.querySelector('#complete_button');
   const addTab = document.querySelector('.add_tab');
   const completedTab = document.querySelector('.completed_tab');
   const uncompletedTab = document.querySelector('.uncompleted_tab');
+  const dropdownButton = document.querySelector('.dropdown_button');
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownItems = document.querySelectorAll('.dropdown_item');
 
   addButton.addEventListener('click', handleAddTodo);
   deleteButton.addEventListener('click', handleDeleteSelectedTodos);
@@ -103,6 +113,16 @@ const init = () => {
   addTab.addEventListener('click', handleFilterAll);
   completedTab.addEventListener('click', handleFilterCompleted);
   uncompletedTab.addEventListener('click', handleFilterUncompleted);
+  dropdownButton.addEventListener('click', () => {
+    dropdown.classList.toggle('open');
+  });
+  dropdownItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      const priority = parseInt(e.target.dataset.priority, 10);
+      handlePriorityFilter(priority);
+      dropdown.classList.remove('open');
+    });
+  });
 };
 
 export { init };
