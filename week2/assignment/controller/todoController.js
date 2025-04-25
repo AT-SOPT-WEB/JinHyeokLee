@@ -58,16 +58,39 @@ const handleCompleteTodo = (id) => {
   renderTable(getTodos());
 };
 
+const handleFilterAll = () => {
+  const todos = getTodos();
+  renderTable(todos);
+};
+
+const handleFilterCompleted = () => {
+  const todos = getTodos();
+  const completedTodos = todos.filter((todo) => todo.completed);
+  renderTable(completedTodos);
+};
+
+const handleFilterUncompleted = () => {
+  const todos = getTodos();
+  const uncompletedTodos = todos.filter((todo) => !todo.completed);
+  renderTable(uncompletedTodos);
+};
+
 const init = () => {
   initTable();
   renderTable(getTodos());
   const addButton = document.querySelector('#add_button');
   const deleteButton = document.querySelector('#delete_button');
   const completeButton = document.querySelector('#complete_button');
+  const addTab = document.querySelector('.add_tab');
+  const completedTab = document.querySelector('.completed_tab');
+  const uncompletedTab = document.querySelector('.uncompleted_tab');
 
   addButton.addEventListener('click', handleAddTodo);
   deleteButton.addEventListener('click', handleDeleteSelectedTodos);
   completeButton.addEventListener('click', handleCompleteTodo);
+  addTab.addEventListener('click', handleFilterAll);
+  completedTab.addEventListener('click', handleFilterCompleted);
+  uncompletedTab.addEventListener('click', handleFilterUncompleted);
 };
 
 export { init };
