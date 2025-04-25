@@ -155,3 +155,7 @@ input {
 select {
   border: none;
 }
+
+input[type='checkbox']:focus {
+  outline: none;
+}

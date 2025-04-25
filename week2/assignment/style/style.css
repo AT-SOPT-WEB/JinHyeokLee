@@ -23,7 +23,7 @@
   white-space: nowrap;
   text-align: center;
 
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   cursor: pointer;
   border-radius: 0.5rem;
 }
@@ -79,7 +79,7 @@ input:focus {
   padding: 0.8rem;
   text-align: center;
 
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   border-radius: 0.5rem;
   color: #ffffff;
 }
@@ -88,4 +88,58 @@ input:focus {
   display: flex;
   gap: 1rem;
   align-self: flex-end;
+}
+
+/* main-table */
+table {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--color-gray);
+  border-collapse: collapse;
+}
+
+table col:nth-child(1) {
+  width: 10%;
+}
+
+table col:nth-child(2) {
+  width: 15%;
+}
+
+table col:nth-child(3) {
+  width: 15%;
+}
+
+table col:nth-child(4) {
+  width: 60%;
+}
+
+thead {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+}
+
+th {
+  vertical-align: middle;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+input[type='checkbox'] {
+  width: 1.4rem;
 }
