@@ -36,22 +36,6 @@ const deleteTodo = (id) => {
   setTodos(updatedTodos);
 };
 
-// const completeTodo = (id) => {
-//   const storedTodos = getTodos();
-//   const updatedTodos = storedTodos.map((todo) => {
-//     if (todo.id === id) {
-//       if (todo.completed) {
-//         showModal('이미 완료된 todo입니다!');
-//         return todo;
-//       }
-//       return { ...todo, completed: !todo.completed };
-//     } else {
-//       return todo;
-//     }
-//   });
-//   setTodos(updatedTodos);
-// };
-
 const completeTodos = (ids) => {
   const todos = getTodos();
   const selected = todos.filter((todo) => ids.includes(todo.id));

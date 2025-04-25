@@ -47,17 +47,6 @@ const handleDeleteSelectedTodos = () => {
   renderTable(getTodos());
 };
 
-// const handleCompleteTodo = (id) => {
-//   const checkboxes = document.querySelectorAll(
-//     'input[type="checkbox"]:checked'
-//   );
-//   checkboxes.forEach((checkbox) => {
-//     const id = parseInt(checkbox.dataset.id, 10);
-//     completeTodo(id);
-//   });
-//   renderTable(getTodos());
-// };
-
 const handleCompleteTodo = () => {
   const checkboxes = document.querySelectorAll(
     'input[type="checkbox"]:checked'
