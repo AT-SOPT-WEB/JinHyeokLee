@@ -1,7 +1,10 @@
-import './styles/index.css';
+import Header from './components/Header/Header';
 
 function App() {
-  return <h1>하이</h1>;
+  return (
+    <Header>
+    </Header>
+  );
 }
 
 export default App;
