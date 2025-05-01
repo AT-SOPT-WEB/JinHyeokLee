@@ -1,3 +1,5 @@
+import './styles/index.css';
+
 function App() {
   return <h1>하이</h1>;
 }
