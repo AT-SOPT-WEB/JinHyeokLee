@@ -39,6 +39,13 @@ const globalStyle = css`
       cursor: not-allowed;
     }
   }
+
+  input {
+    border: none;
+    :focus {
+      outline: none;
+    }
+  }
 `;
 
 const GlobalStyle = () => <Global styles={globalStyle} />;
