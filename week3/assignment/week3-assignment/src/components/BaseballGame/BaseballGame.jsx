@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import {
-  GAME_END_MESSAGE,
+  GAME_FAIL_MESSAGE,
   GAME_START_MESSAGE,
+  GAME_SUCCESS_MESSAGE,
 } from '../../constants/baseball.js';
 import { createGame } from '../../utils/baseballGame.js';
 import RoundResultBox from '../RoundResultBox/RoundResultBox';
@@ -24,19 +25,29 @@ const BaseballGame = () => {
   };
 
   const restartGame = () => {
-    setMessage(GAME_END_MESSAGE);
+    gameRef.current.start();
+    resetInputValue();
+    setResultList([]);
+    setMessage(GAME_START_MESSAGE);
+  };
 
+  const handleSuccessGame = () => {
+    setMessage(GAME_SUCCESS_MESSAGE);
     setTimeout(() => {
-      gameRef.current.start();
-      setGameInputValue('');
-      setResultList([]);
-      setMessage(GAME_START_MESSAGE);
+      restartGame();
     }, 3000);
+  };
+
+  const handleFailGame = () => {
+    setMessage(GAME_FAIL_MESSAGE);
+    setTimeout(() => {
+      restartGame();
+    }, 5000);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    resetInputValue();
+    resetInputValue(); // input 초기화
 
     try {
       const inputArray = gameInputValue.split('').map(Number);
@@ -48,12 +59,24 @@ const BaseballGame = () => {
         ball: roundResult.ball,
       };
 
-      setResultList((prev) => [...prev, newResult]);
-      setMessage(`${newResult.strike}S ${newResult.ball}B`);
+      setResultList((prev) => {
+        const updated = [...prev, newResult];
 
+        // 10회 초과 시 게임 패배
+        if (updated.length > 10) {
+          handleFailGame();
+          return prev;
+        }
+
+        return updated;
+      });
+
+      // 정답 맞히면 게임 성공
       if (roundResult.isEnd) {
-        restartGame();
+        handleSuccessGame();
       }
+
+      setMessage(`${newResult.strike}S ${newResult.ball}B`);
     } catch (e) {
       setMessage(e.message);
     }
