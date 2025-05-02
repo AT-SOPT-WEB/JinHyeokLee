@@ -28,9 +28,9 @@ export const buttonStyle = (theme) => css`
   font-size: 1rem;
   font-weight: 700;
   border-radius: 0.5rem;
-  color: ${theme.colors.blue100};
+  color: ${theme.colors.white100};
 
-  background-color: ${theme.colors.purple100};
+  background-color: ${theme.colors.blue100};
 
   transition:
     background-color 0.3s ease-in-out,

@@ -1,13 +1,6 @@
-import { useState } from 'react';
 import * as style from './headerStyle';
 
-function Header() {
-  const [activeTab, setActiveTab] = useState('githubSearch');
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
+function Header({ activeTab, onClick }) {
   return (
     <header css={style.headerStyle}>
       <div>
@@ -18,7 +11,7 @@ function Header() {
               style.buttonStyle,
               activeTab === 'github' && style.activeButton,
             ]}
-            onClick={() => handleTabClick('github')}
+            onClick={() => onClick('github')}
           >
             깃허브 검색
           </button>
@@ -28,7 +21,7 @@ function Header() {
               style.buttonStyle,
               activeTab === 'baseball' && style.activeButton,
             ]}
-            onClick={() => handleTabClick('baseball')}
+            onClick={() => onClick('baseball')}
           >
             숫자 야구
           </button>

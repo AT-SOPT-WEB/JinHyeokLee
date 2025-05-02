@@ -20,6 +20,14 @@ const globalStyle = css`
     overflow-x: hidden;
   }
 
+  body {
+    -ms-overflow-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   button {
     margin: 0;
     padding: 0;
