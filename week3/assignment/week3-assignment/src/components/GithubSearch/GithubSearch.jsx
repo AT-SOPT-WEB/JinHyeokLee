@@ -23,6 +23,11 @@ const GithubSearch = ({
   };
 
   const addRecentSearch = () => {
+    // 최근 검색어 중복 방지
+    if (recentSearchList.includes(searchKeyword)) {
+      return;
+    }
+
     let updatedList = [...recentSearchList, searchKeyword];
     setRecentSearchList(updatedList);
     setStorage('recentSearchList', updatedList);
