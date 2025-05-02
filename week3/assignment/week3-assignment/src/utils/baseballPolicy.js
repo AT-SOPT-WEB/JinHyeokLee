@@ -34,14 +34,14 @@ export const isGameEnd = (strikeCount) => {
 };
 
 export const validateUserNumbers = (input) => {
+  if (input.some((value) => !Number.isInteger(value))) {
+    throw new Error(ERROR_NOT_NUMBER);
+  }
+
   if (input.length !== GAME_NUMBER_LENGTH) {
     throw new Error(
       `입력한 숫자는 반드시 ${GAME_NUMBER_LENGTH}자리여야 합니다.`
     );
-  }
-
-  if (input.some((value) => !Number.isInteger(value))) {
-    throw new Error(ERROR_NOT_NUMBER);
   }
 
   const uniqueNumbers = new Set(input);
