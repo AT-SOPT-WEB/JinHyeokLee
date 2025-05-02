@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getStorage, setStorage } from '../../utils/localStorage.js';
 import Card from '../Card/Card.jsx';
 import Chip from '../Chip/Chip';
@@ -10,8 +10,10 @@ const GithubSearch = ({
   getUserInfo,
   searchKeyword,
   handleSearchKeywordChange,
+  resetInput,
 }) => {
   const [recentSearchList, setRecentSearchList] = useState([]);
+  const inputRef = useRef(null);
   const { status, data } = userInfo;
 
   const addRecentSearch = () => {
@@ -30,6 +32,7 @@ const GithubSearch = ({
     e.preventDefault();
     getUserInfo(searchKeyword);
     addRecentSearch();
+    resetInput();
   };
 
   useEffect(() => {
@@ -43,6 +46,7 @@ const GithubSearch = ({
     <form onSubmit={(e) => handleSubmit(e)}>
       <div css={style.containerStyle}>
         <Input
+          ref={inputRef}
           placeholder="GitHub 프로필을 검색하세요"
           value={searchKeyword}
           onChange={handleSearchKeywordChange}

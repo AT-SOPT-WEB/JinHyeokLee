@@ -16,6 +16,10 @@ function App() {
     setSearchKeyword(e.target.value);
   };
 
+  const resetInput = () => {
+    setSearchKeyword('');
+  };
+
   const getUserInfo = async (user) => {
     setUserInfo({ status: 'pending', data: null });
     try {
@@ -43,6 +47,7 @@ function App() {
           getUserInfo={getUserInfo}
           searchKeyword={searchKeyword}
           handleSearchKeywordChange={handleSearchKeywordChange}
+          resetInput={resetInput}
         />
       </main>
     </>

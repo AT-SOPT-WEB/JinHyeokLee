@@ -10,7 +10,6 @@ const Input = ({ ...props }) => {
   return (
     <div css={[style.containerStyle, isFocused && style.containerFocusStyle]}>
       <input
-        // ref={ref}
         type="text"
         css={style.inputStyle}
         onFocus={handleFocus}
