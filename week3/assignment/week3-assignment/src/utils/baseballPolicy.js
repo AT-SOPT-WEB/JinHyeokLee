@@ -1,4 +1,6 @@
 import {
+  ERROR_DUPLICATE,
+  ERROR_NOT_NUMBER,
   GAME_NUMBER_LENGTH,
   MAX_NUMBER,
   MIN_NUMBER,
@@ -38,8 +40,12 @@ export const validateUserNumbers = (input) => {
     );
   }
 
-  const uniqueDigits = new Set(input);
-  if (uniqueDigits.size !== GAME_NUMBER_LENGTH) {
-    throw new Error('입력한 숫자에 중복된 숫자가 있습니다.');
+  if (input.some((value) => !Number.isInteger(value))) {
+    throw new Error(ERROR_NOT_NUMBER);
+  }
+
+  const uniqueNumbers = new Set(input);
+  if (uniqueNumbers.size !== GAME_NUMBER_LENGTH) {
+    throw new Error(ERROR_DUPLICATE);
   }
 };
