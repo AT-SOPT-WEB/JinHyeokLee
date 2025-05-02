@@ -4,8 +4,8 @@ import {
   GAME_START_MESSAGE,
 } from '../../constants/baseball.js';
 import { createGame } from '../../utils/baseballGame.js';
-import Input from '../Input/Input';
 import RoundResultBox from '../RoundResultBox/RoundResultBox';
+import Input from '../shared/Input/Input.jsx';
 import * as style from './baseballGameStyle';
 
 const BaseballGame = () => {
@@ -66,6 +66,7 @@ const BaseballGame = () => {
           value={gameInputValue}
           onChange={handleGameValueChange}
           onSubmit={handleSubmit}
+          placeholder="3자리 숫자를 입력하세요"
         />
         <p css={style.textStyle}>{message}</p>
         <div css={style.roundResultContainerStyle}>

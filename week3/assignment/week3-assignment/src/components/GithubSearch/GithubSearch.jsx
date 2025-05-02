@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { getStorage, setStorage } from '../../utils/localStorage.js';
 import Card from '../Card/Card.jsx';
 import Chip from '../Chip/Chip';
-import Input from '../Input/Input';
-import Skeleton from '../Skeleton/Skeleton.jsx';
+import Input from '../shared/Input/Input.jsx';
+import Skeleton from '../shared/Skeleton/Skeleton.jsx';
 import * as style from './githubSearchStyle';
 
 const GithubSearch = ({ userInfo, getUserInfo }) => {
