@@ -15,6 +15,24 @@ export const containerStyle = (theme) => css`
   margin-top: 2rem;
 `;
 
+export const closeButtonStyle = (theme) => css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+
+  width: 2rem;
+  height: 2rem;
+
+  background-color: ${theme.colors.purple400};
+  border-radius: 50%;
+`;
+
+export const closeIconStyle = css`
+  width: 1rem;
+  height: 1rem;
+`;
+
 export const profileImageStyle = css`
   width: 10rem;
   height: 10rem;

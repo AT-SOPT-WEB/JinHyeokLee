@@ -13,8 +13,13 @@ const GithubSearch = ({
   resetInput,
 }) => {
   const [recentSearchList, setRecentSearchList] = useState([]);
+  const [isCardOpen, setIsCardOpen] = useState(true);
   const inputRef = useRef(null);
   const { status, data } = userInfo;
+
+  const handleCardClose = () => {
+    setIsCardOpen(false);
+  };
 
   const addRecentSearch = () => {
     let updatedList = [...recentSearchList, searchKeyword];
@@ -31,6 +36,7 @@ const GithubSearch = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     getUserInfo(searchKeyword);
+    setIsCardOpen(true);
     addRecentSearch();
     resetInput();
   };
@@ -61,7 +67,9 @@ const GithubSearch = ({
             />
           ))}
         </div>
-        {status === 'resolved' && <Card data={data} />}
+        {status === 'resolved' && isCardOpen && (
+          <Card data={data} handleCardClose={handleCardClose} />
+        )}
       </div>
     </form>
   );

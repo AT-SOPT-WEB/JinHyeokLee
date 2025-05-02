@@ -1,10 +1,18 @@
+import closeIcon_gray from '../../assets/icons/closeIcon_gray.png';
 import * as style from './cardStyle.js';
 
-const Card = ({ data }) => {
+const Card = ({ data, handleCardClose }) => {
   const { name, login, followers, following, avatar_url, html_url, bio } = data;
 
   return (
     <div css={style.containerStyle}>
+      <button
+        type="button"
+        css={style.closeButtonStyle}
+        onClick={handleCardClose}
+      >
+        <img src={closeIcon_gray} alt="closeIcon" css={style.closeIconStyle} />
+      </button>
       <a href={html_url} target="_blank" rel="noopener noreferrer">
         <img
           css={style.profileImageStyle}
