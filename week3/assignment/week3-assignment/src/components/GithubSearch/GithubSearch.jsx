@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { MAX_RECENT_SEARCH_COUNT } from '../../constants/githubSearch.js';
 import { getStorage, setStorage } from '../../utils/localStorage.js';
 import Card from '../Card/Card.jsx';
 import Chip from '../Chip/Chip';
@@ -32,6 +33,12 @@ const GithubSearch = ({ userInfo, getUserInfo }) => {
     }
 
     let updatedList = [...recentSearchList, searchKeyword];
+
+    // 최근 검색어 개수 제한 (3개)
+    if (updatedList.length > MAX_RECENT_SEARCH_COUNT) {
+      updatedList = updatedList.slice(1); // 맨 처음 == 가장 오래된 검색어 삭제
+    }
+
     setRecentSearchList(updatedList);
     setStorage('recentSearchList', updatedList);
   };

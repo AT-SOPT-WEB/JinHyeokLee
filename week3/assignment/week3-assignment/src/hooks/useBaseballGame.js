@@ -13,14 +13,8 @@ export const useBaseballGame = () => {
 
   const gameRef = useRef(createGame());
 
+  const handleInputChange = (e) => setGameInputValue(e.target.value);
   const resetInputValue = () => setGameInputValue('');
-
-  const restartGame = () => {
-    gameRef.current.start();
-    resetInputValue();
-    setResultList([]);
-    setMessage(GAME_START_MESSAGE);
-  };
 
   const handleSuccessGame = () => {
     setMessage(GAME_SUCCESS_MESSAGE);
@@ -32,7 +26,12 @@ export const useBaseballGame = () => {
     setTimeout(restartGame, 5000);
   };
 
-  const handleInputChange = (e) => setGameInputValue(e.target.value);
+  const restartGame = () => {
+    gameRef.current.start();
+    resetInputValue();
+    setResultList([]);
+    setMessage(GAME_START_MESSAGE);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
