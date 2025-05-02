@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as style from './inputStyle';
 
-const Input = ({ ref, ...props }) => {
+const Input = ({ ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
@@ -10,7 +10,7 @@ const Input = ({ ref, ...props }) => {
   return (
     <div css={[style.containerStyle, isFocused && style.containerFocusStyle]}>
       <input
-        ref={ref}
+        // ref={ref}
         type="text"
         css={style.inputStyle}
         onFocus={handleFocus}

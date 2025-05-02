@@ -8,7 +8,7 @@ export const containerStyle = css`
   height: 100%;
   gap: 1rem;
 
-  margin-top: 5rem;
+  margin-top: 2rem;
 `;
 
 export const textStyle = css`
