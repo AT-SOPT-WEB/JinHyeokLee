@@ -11,10 +11,14 @@ export const chipStyle = (theme) => css`
   border: 1px solid ${theme.colors.purple500};
 
   color: ${theme.colors.purple500};
-  font-size: 1rem;
-  font-weight: 700;
 
   white-space: nowrap;
+`;
+
+export const textStyle = css`
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
 `;
 
 export const closeIconStyle = css`

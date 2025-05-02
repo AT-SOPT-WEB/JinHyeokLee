@@ -1,10 +1,12 @@
 import closeIcon from '../../assets/icons/closeIcon.png';
 import * as style from './chipStyle';
 
-const Chip = ({ keyword, onDelete }) => {
+const Chip = ({ keyword, onDelete, onRetrySearch }) => {
   return (
     <div css={style.chipStyle}>
-      {keyword}
+      <p onClick={() => onRetrySearch(keyword)} css={style.textStyle}>
+        {keyword}
+      </p>
       <img
         src={closeIcon}
         alt="ChipCloseIcon"

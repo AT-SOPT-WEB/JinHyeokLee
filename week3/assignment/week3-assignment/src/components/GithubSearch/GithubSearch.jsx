@@ -42,6 +42,11 @@ const GithubSearch = ({
     resetInput();
   };
 
+  const handleRetrySearch = (keyword) => {
+    getUserInfo(keyword);
+    setIsCardOpen(true);
+  };
+
   useEffect(() => {
     const storedList = getStorage('recentSearchList');
     if (storedList) {
@@ -65,6 +70,7 @@ const GithubSearch = ({
               keyword={keyword}
               key={`${keyword}-${index}`}
               onDelete={deleteRecentSearch}
+              onRetrySearch={handleRetrySearch}
             />
           ))}
         </div>
