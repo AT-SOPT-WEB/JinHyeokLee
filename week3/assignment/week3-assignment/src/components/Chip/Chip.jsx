@@ -1,10 +1,10 @@
 import closeIcon from '../../assets/icons/closeIcon.png';
 import * as style from './chipStyle';
 
-const Chip = ({ name }) => {
+const Chip = ({ keyword }) => {
   return (
     <div css={style.chipStyle}>
-      {name}
+      {keyword}
       <img src={closeIcon} alt="ChipCloseIcon" css={style.closeIconStyle} />
     </div>
   );

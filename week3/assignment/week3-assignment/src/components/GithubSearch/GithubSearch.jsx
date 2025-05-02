@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { getStorage, setStorage } from '../../utils/localStorage.js';
 import Card from '../Card/Card.jsx';
 import Chip from '../Chip/Chip';
 import Input from '../Input/Input';
@@ -9,12 +11,27 @@ const GithubSearch = ({
   searchKeyword,
   handleSearchKeywordChange,
 }) => {
+  const [recentSearchList, setRecentSearchList] = useState([]);
   const { status, data } = userInfo;
+
+  const addSearchKeyword = () => {
+    let updatedList = [...recentSearchList, searchKeyword];
+    setRecentSearchList(updatedList);
+    setStorage('recentSearchList', updatedList);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     getUserInfo(searchKeyword);
+    addSearchKeyword();
   };
+
+  useEffect(() => {
+    const storedList = getStorage('recentSearchList');
+    if (storedList) {
+      setRecentSearchList(storedList);
+    }
+  }, []);
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
@@ -26,8 +43,8 @@ const GithubSearch = ({
         />
         <p css={style.textStyle}>최근 검색어</p>
         <div css={style.chipContainerStyle}>
-          {['이진혁', '한수정', '박희선'].map((item) => (
-            <Chip name={item} />
+          {recentSearchList.map((keyword, index) => (
+            <Chip keyword={keyword} key={`${keyword}-${index}`} />
           ))}
         </div>
         {status === 'resolved' && <Card data={data} />}
