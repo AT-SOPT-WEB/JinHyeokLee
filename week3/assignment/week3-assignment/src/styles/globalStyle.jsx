@@ -46,6 +46,17 @@ const globalStyle = css`
       outline: none;
     }
   }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+  }
+
+  a:hover,
+  a:active {
+    text-decoration: none;
+  }
 `;
 
 const GlobalStyle = () => <Global styles={globalStyle} />;
