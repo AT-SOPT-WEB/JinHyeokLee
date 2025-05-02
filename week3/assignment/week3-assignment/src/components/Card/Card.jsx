@@ -1,19 +1,21 @@
 import * as style from './cardStyle.js';
 
-const Card = () => {
+const Card = ({ data }) => {
+  const { name, login, followers, following, avatar_url } = data;
+
   return (
     <div css={style.containerStyle}>
-      <img css={style.profileImageStyle} alt="프로필 이미지" />
-      <p css={style.nameStyle}>이진혁</p>
-      <p css={style.nicknameStyle}>constantly-dev</p>
+      <img css={style.profileImageStyle} alt="프로필 이미지" src={avatar_url} />
+      <p css={style.nameStyle}>{name}</p>
+      <p css={style.nicknameStyle}>{login}</p>
       <div css={style.followContainerStyle}>
         <div css={style.followStyle}>
-          <p css={style.followTextStyle}>Follower</p>
-          <p>100</p>
+          <p>Follower</p>
+          <p>{followers}</p>
         </div>
         <div css={style.followStyle}>
-          <p css={style.followTextStyle}>Following</p>
-          <p>200</p>
+          <p>Following</p>
+          <p>{following}</p>
         </div>
       </div>
     </div>

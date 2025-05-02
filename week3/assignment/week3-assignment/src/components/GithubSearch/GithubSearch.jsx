@@ -3,22 +3,36 @@ import Chip from '../Chip/Chip';
 import Input from '../Input/Input';
 import * as style from './githubSearchStyle';
 
-const GithubSearch = ({ searchKeyword, handleSearchKeywordChange }) => {
+const GithubSearch = ({
+  userInfo,
+  getUserInfo,
+  searchKeyword,
+  handleSearchKeywordChange,
+}) => {
+  const { status, data } = userInfo;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getUserInfo(searchKeyword);
+  };
+
   return (
-    <div css={style.containerStyle}>
-      <Input
-        placeholder="GitHub 프로필을 검색하세요"
-        value={searchKeyword}
-        onChange={handleSearchKeywordChange}
-      />
-      <p css={style.textStyle}>최근 검색어</p>
-      <div css={style.chipContainerStyle}>
-        {['이진혁', '한수정', '박희선'].map((item) => (
-          <Chip name={item}></Chip>
-        ))}
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <div css={style.containerStyle}>
+        <Input
+          placeholder="GitHub 프로필을 검색하세요"
+          value={searchKeyword}
+          onChange={handleSearchKeywordChange}
+        />
+        <p css={style.textStyle}>최근 검색어</p>
+        <div css={style.chipContainerStyle}>
+          {['이진혁', '한수정', '박희선'].map((item) => (
+            <Chip name={item} />
+          ))}
+        </div>
+        {status === 'resolved' && <Card data={data} />}
       </div>
-      <Card />
-    </div>
+    </form>
   );
 };
 

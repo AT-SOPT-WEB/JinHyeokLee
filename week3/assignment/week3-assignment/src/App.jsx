@@ -28,12 +28,9 @@ function App() {
     }
   };
 
-  console.log(userInfo);
-
   return (
     <>
       <Header activeTab={activeTab} onClick={handleTabClick} />
-      <button onClick={() => getUserInfo('m2na7')}>dd</button>
       <main
         css={css`
           display: flex;
@@ -42,6 +39,8 @@ function App() {
         `}
       >
         <GithubSearch
+          userInfo={userInfo}
+          getUserInfo={getUserInfo}
           searchKeyword={searchKeyword}
           handleSearchKeywordChange={handleSearchKeywordChange}
         />
