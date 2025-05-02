@@ -14,16 +14,22 @@ const GithubSearch = ({
   const [recentSearchList, setRecentSearchList] = useState([]);
   const { status, data } = userInfo;
 
-  const addSearchKeyword = () => {
+  const addRecentSearch = () => {
     let updatedList = [...recentSearchList, searchKeyword];
     setRecentSearchList(updatedList);
     setStorage('recentSearchList', updatedList);
   };
 
+  const deleteRecentSearch = (keyword) => {
+    const updateList = recentSearchList.filter((item) => item !== keyword);
+    setRecentSearchList(updateList);
+    setStorage('recentSearchList', updateList);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     getUserInfo(searchKeyword);
-    addSearchKeyword();
+    addRecentSearch();
   };
 
   useEffect(() => {
@@ -44,7 +50,11 @@ const GithubSearch = ({
         <p css={style.textStyle}>최근 검색어</p>
         <div css={style.chipContainerStyle}>
           {recentSearchList.map((keyword, index) => (
-            <Chip keyword={keyword} key={`${keyword}-${index}`} />
+            <Chip
+              keyword={keyword}
+              key={`${keyword}-${index}`}
+              onDelete={deleteRecentSearch}
+            />
           ))}
         </div>
         {status === 'resolved' && <Card data={data} />}
