@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import BaseballGame from './components/BaseballGame/BaseballGame';
 import GithubSearch from './components/GithubSearch/GithubSearch';
 import Header from './components/Header/Header';
 
@@ -42,13 +43,16 @@ function App() {
           align-items: center;
         `}
       >
-        <GithubSearch
-          userInfo={userInfo}
-          getUserInfo={getUserInfo}
-          searchKeyword={searchKeyword}
-          handleSearchKeywordChange={handleSearchKeywordChange}
-          resetInput={resetInput}
-        />
+        {activeTab === 'github' && (
+          <GithubSearch
+            userInfo={userInfo}
+            getUserInfo={getUserInfo}
+            searchKeyword={searchKeyword}
+            handleSearchKeywordChange={handleSearchKeywordChange}
+            resetInput={resetInput}
+          />
+        )}
+        {activeTab === 'baseball' && <BaseballGame />}
       </main>
     </>
   );
