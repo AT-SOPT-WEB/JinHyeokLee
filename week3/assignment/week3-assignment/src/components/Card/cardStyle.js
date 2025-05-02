@@ -7,12 +7,12 @@ export const containerStyle = (theme) => css`
   gap: 1rem;
 
   width: 100%;
+  height: 30rem;
   padding: 2rem;
   background-color: ${theme.colors.purple500};
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 
   border-radius: 1rem;
-  margin-top: 2rem;
 `;
 
 export const closeButtonStyle = (theme) => css`

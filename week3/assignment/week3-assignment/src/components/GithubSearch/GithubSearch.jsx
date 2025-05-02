@@ -3,6 +3,7 @@ import { getStorage, setStorage } from '../../utils/localStorage.js';
 import Card from '../Card/Card.jsx';
 import Chip from '../Chip/Chip';
 import Input from '../Input/Input';
+import Skeleton from '../Skeleton/Skeleton.jsx';
 import * as style from './githubSearchStyle';
 
 const GithubSearch = ({
@@ -67,8 +68,14 @@ const GithubSearch = ({
             />
           ))}
         </div>
+        {status === 'pending' && <Skeleton width="100%" height="30rem" />}
         {status === 'resolved' && isCardOpen && (
           <Card data={data} handleCardClose={handleCardClose} />
+        )}
+        {status === 'rejected' && (
+          <div css={style.errorStyle}>
+            <p>검색 결과가 없습니다.</p>
+          </div>
         )}
       </div>
     </form>

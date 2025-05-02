@@ -8,7 +8,7 @@ export const containerStyle = css`
   height: 100%;
   gap: 1rem;
 
-  margin-top: 2rem;
+  margin: 2rem 0;
 `;
 
 export const textStyle = css`
@@ -26,4 +26,13 @@ export const chipContainerStyle = css`
   overflow-y: hidden;
 
   gap: 0.5rem;
+`;
+
+export const errorStyle = css`
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #721c24;
 `;
