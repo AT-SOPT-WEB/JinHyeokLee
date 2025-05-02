@@ -6,13 +6,8 @@ import Input from '../Input/Input';
 import Skeleton from '../Skeleton/Skeleton.jsx';
 import * as style from './githubSearchStyle';
 
-const GithubSearch = ({
-  userInfo,
-  getUserInfo,
-  searchKeyword,
-  handleSearchKeywordChange,
-  resetInput,
-}) => {
+const GithubSearch = ({ userInfo, getUserInfo }) => {
+  const [searchKeyword, setSearchKeyword] = useState('');
   const [recentSearchList, setRecentSearchList] = useState([]);
   const [isCardOpen, setIsCardOpen] = useState(true);
   const inputRef = useRef(null);
@@ -20,6 +15,14 @@ const GithubSearch = ({
 
   const handleCardClose = () => {
     setIsCardOpen(false);
+  };
+
+  const handleSearchKeywordChange = (e) => {
+    setSearchKeyword(e.target.value);
+  };
+
+  const resetInput = () => {
+    setSearchKeyword('');
   };
 
   const addRecentSearch = () => {

@@ -7,18 +7,9 @@ import Header from './components/Header/Header';
 function App() {
   const [activeTab, setActiveTab] = useState('github');
   const [userInfo, setUserInfo] = useState({ status: 'idle', data: null });
-  const [searchKeyword, setSearchKeyword] = useState('');
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-  };
-
-  const handleSearchKeywordChange = (e) => {
-    setSearchKeyword(e.target.value);
-  };
-
-  const resetInput = () => {
-    setSearchKeyword('');
   };
 
   const getUserInfo = async (user) => {
@@ -44,13 +35,7 @@ function App() {
         `}
       >
         {activeTab === 'github' && (
-          <GithubSearch
-            userInfo={userInfo}
-            getUserInfo={getUserInfo}
-            searchKeyword={searchKeyword}
-            handleSearchKeywordChange={handleSearchKeywordChange}
-            resetInput={resetInput}
-          />
+          <GithubSearch userInfo={userInfo} getUserInfo={getUserInfo} />
         )}
         {activeTab === 'baseball' && <BaseballGame />}
       </main>

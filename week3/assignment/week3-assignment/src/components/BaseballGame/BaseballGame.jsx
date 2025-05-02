@@ -19,6 +19,10 @@ const BaseballGame = () => {
     setGameInputValue(e.target.value);
   };
 
+  const resetInputValue = () => {
+    setGameInputValue('');
+  };
+
   const restartGame = () => {
     setMessage(GAME_END_MESSAGE);
 
@@ -32,6 +36,7 @@ const BaseballGame = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    resetInputValue();
 
     try {
       const inputArray = gameInputValue.split('').map(Number);
