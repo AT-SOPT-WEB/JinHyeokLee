@@ -1,0 +1,28 @@
+import { css } from '@emotion/react';
+
+export const chipStyle = (theme) => css`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  height: 2.5rem;
+  padding: 1rem 0.8rem;
+  border-radius: 1rem;
+  border: 1px solid ${theme.colors.purple500};
+
+  color: ${theme.colors.purple500};
+
+  white-space: nowrap;
+`;
+
+export const textStyle = css`
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+`;
+
+export const closeIconStyle = css`
+  width: 0.8rem;
+  height: 0.8rem;
+  cursor: pointer;
+`;
