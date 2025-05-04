@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Table</title>
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/theme.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script type="module" src="./main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul class="tab_container">
+          <li class="tab">
+            <button type="button" class="add_tab">전체</button>
+          </li>
+          <li class="tab">
+            <button type="button" class="completed_tab">완료</button>
+          </li>
+          <li class="tab">
+            <button type="button" class="uncompleted_tab">미완료</button>
+          </li>
+          <li class="tab dropdown">
+            <button type="button" class="dropdown_button">
+              중요도
+              <img
+                src="./assets/icons/dropdownIcon.png"
+                alt="드롭다운 아이콘"
+              />
+            </button>
+            <ul class="dropdown_menu">
+              <li class="dropdown_item" data-priority="1">1</li>
+              <li class="dropdown_item" data-priority="2">2</li>
+              <li class="dropdown_item" data-priority="3">3</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+        <div class="input_container">
+          <input type="text" placeholder="할 일을 입력하세요" />
+          <select name="중요도 선택" id="add_select">
+            <option value="" disabled selected>중요도 선택</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <button id="add_button" class="form_button">추가</button>
+        </div>
+
+        <div class="button_container">
+          <button type="button" id="delete_button" class="form_button">
+            삭제
+          </button>
+          <button type="button" id="complete_button" class="form_button">
+            완료
+          </button>
+        </div>
+
+        <table>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="th_checkbox" /></th>
+              <th>중요도</th>
+              <th>완료 여부</th>
+              <th>할 일</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </main>
+    </div>
+
+    <div class="modal_overlay"></div>
+    <div class="modal">
+      <p class="modal_msg"></p>
+      <button type="button" class="close_button">닫기</button>
+    </div>
+  </body>
+</html>
